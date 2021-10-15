@@ -22,30 +22,29 @@ namespace RoverList
 
         public override void Add(T data)
         {
-            Node n = new Node(data);
-            
-            if (head == null)
-            {
-                head = n;
-                current = n;
-            }
-            else
-            {
-                current.Next = n;
-                current = n;
-            }
-
-            count += 1;
+            Add(Count, data);
         }
 
         public override void Add(int Position, T data)
         {
             Node n = new Node(data);
+            current = head;
+            
             if (Position == 0)
             {
-                Node hold = head;
+                n.Next = head;
                 head = n;
-                head.Next = hold;
+            }
+            else
+            {
+                for (int i = 0; i < Position - 1; i++)
+                {
+                    current = current.Next;
+                }
+
+                n.Next = current.Next.Next;
+                current.Next = n;
+                
             }
         }
 
@@ -57,36 +56,37 @@ namespace RoverList
 
         public override T ElementAt(int Position)
         {
-            Node n;
             current = head;
             
             for (int i = 0; i < Position; i++)
             {
-                n = current.Next;
+                current = current.Next;
+                
             }
 
-            return n.data;
+            return current.data;
         }
 
         public override void ListNodes()
         {
-            throw new NotImplementedException();
+            current = head;
+            for (int i = 0; i < Count; i++)
+            {
+                Console.WriteLine(current);
+                current = current.Next;
+            }
         }
 
         public override bool RemoveAt(int Position)
         {
-            Node n;
             current = head;
             
             for (int i = 0; i < Position - 1; i++)
             {
-                n = current.Next;
+                current = current.Next;
             }
-
-            n.Next = current.Next.Next;
-
-
-
+            
+            current.Next = current.Next.Next;
         }
     }
 }

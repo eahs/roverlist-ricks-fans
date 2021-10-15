@@ -10,15 +10,22 @@ namespace RoverList
     {
         static void Main(string[] args)
         {
-            RoverList<string> list = new RoverList<string>();
-			string[] words = [""];
-
+     
             // TODO:  Implement the RoverList class
             // TODO:  Create a RoverList and then fill it with 16 words
-			
+			RoverList<string> WordList = new RoverList<string>();
+			string[] words = ["zero", "one", "two", "three", "four", 
+							  "five", "six", "seven", "eight", "nine", 
+							  "ten", "eleven" "twelve", "thirteen", 
+							  "fourteen", "fifteen"];
+			for (word in words)
+			{
+				WordList.Add(word);
+			}
 
 
             // TODO:  Print out the list
+			WordList.ListNodes();
 
             // TODO:  Prompt the user to input words, add those words to the list until they enter the word "done"
             // TODO:  Print out the list
