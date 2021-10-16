@@ -18,7 +18,7 @@ namespace RoverList
 							  "five", "six", "seven", "eight", "nine", 
 							  "ten", "eleven" "twelve", "thirteen", 
 							  "fourteen", "fifteen"];
-			for (word in words)
+			for (string word in words)
 			{
 				WordList.Add(word);
 			}
@@ -28,17 +28,41 @@ namespace RoverList
 			WordList.ListNodes();
 
             // TODO:  Prompt the user to input words, add those words to the list until they enter the word "done"
-            // TODO:  Print out the list
+			string input = "empty";
+			while (input !- "done")
+			{
+				Console.WriteLine("Enter a word to add to the list. Enter done to finish");
+				WordList.Add(Console.ReadLine());
+			}
+			// TODO:  Print out the list
+			WordList.ListNodes();
 
             // TODO:  Prompt the user to input words, add those words to the FRONT of the list until they enter the word "done"
+			input = "empty";
+			while (input != "done:)
+			{
+				Console.WriteLine("Enter a word to add to the FRONT of the list. Enter done to finish");
+				WordList.Add(0, Console.ReadLine());
+			}
             // TODO:  Print out the list
+			WordList.ListNodes();
 
             // TODO:  Remove every word with an odd length
+			for (int i = 0; i < WordList.Count; i++)
+			{
+				if (WordList.NodeAt(i).data.Length % 2 == 1)
+				{
+					WordList.RemoveAt(i);
+				}
+			}
             // TODO:  Print out the list
+			WordList.ListNodes();
 
             // TODO:  Clear the list
-            // TODO:  Print out the list
+			WordList.Clear();
 
+            // TODO:  Print out the list
+			WordList.ListNodes();
 
         }
     }

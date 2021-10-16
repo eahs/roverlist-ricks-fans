@@ -37,11 +37,7 @@ namespace RoverList
             }
             else
             {
-                for (int i = 0; i < Position - 1; i++)
-                {
-                    current = current.Next;
-                }
-
+                current = NodeAt(Position - 1);
                 n.Next = current.Next.Next;
                 current.Next = n;
                 
@@ -56,15 +52,7 @@ namespace RoverList
 
         public override T ElementAt(int Position)
         {
-            current = head;
-            
-            for (int i = 0; i < Position; i++)
-            {
-                current = current.Next;
-                
-            }
-
-            return current.data;
+            return NodeAt(Position).data;
         }
 
         public override void ListNodes()
@@ -79,14 +67,18 @@ namespace RoverList
 
         public override bool RemoveAt(int Position)
         {
-            current = head;
-            
-            for (int i = 0; i < Position - 1; i++)
-            {
-                current = current.Next;
-            }
-            
+            current = NodeAt(Position - 1);
             current.Next = current.Next.Next;
         }
     }
+        public Node NodeAt (int Position)
+        {
+            current = head;
+                
+            for (int i = 0; i < Position; i++)
+            {
+                current = current.Next;
+            }
+            return current;
+        }
 }
