@@ -35,13 +35,14 @@ namespace RoverList
                 n.Next = head;
                 head = n;
             }
-            else
+            
+            else if (Position > Count)
             {
                 current = NodeAt(Position - 1);
                 n.Next = current.Next.Next;
                 current.Next = n;
-                
             }
+            count += 1;
         }
 
         public override void Clear()
@@ -52,16 +53,14 @@ namespace RoverList
 
         public override T ElementAt(int Position)
         {
-            return NodeAt(Position).data;
+            return NodeAt(Position).Data;
         }
 
         public override void ListNodes()
         {
-            current = head;
             for (int i = 0; i < Count; i++)
             {
-                Console.WriteLine(current);
-                current = current.Next;
+                Console.WriteLine(ElementAt(i));
             }
         }
 
@@ -69,16 +68,20 @@ namespace RoverList
         {
             current = NodeAt(Position - 1);
             current.Next = current.Next.Next;
+
+            return true;
         }
-    }
-        public Node NodeAt (int Position)
+
+        private Node NodeAt(int Position)
         {
             current = head;
-                
+
             for (int i = 0; i < Position; i++)
             {
                 current = current.Next;
             }
+
             return current;
         }
+    }
 }

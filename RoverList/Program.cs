@@ -14,35 +14,36 @@ namespace RoverList
             // TODO:  Implement the RoverList class
             // TODO:  Create a RoverList and then fill it with 16 words
 			RoverList<string> WordList = new RoverList<string>();
-			string[] words = ["zero", "one", "two", "three", "four", 
+			string[] words = {"zero", "one", "two", "three", "four", 
 							  "five", "six", "seven", "eight", "nine", 
-							  "ten", "eleven" "twelve", "thirteen", 
-							  "fourteen", "fifteen"];
-			for (string word in words)
+							  "ten", "eleven", "twelve", "thirteen", 
+							  "fourteen", "fifteen"};
+			foreach (string word in words)
 			{
 				WordList.Add(word);
 			}
-
 
             // TODO:  Print out the list
 			WordList.ListNodes();
 
             // TODO:  Prompt the user to input words, add those words to the list until they enter the word "done"
 			string input = "empty";
-			while (input !- "done")
+			while (input != "done")
 			{
 				Console.WriteLine("Enter a word to add to the list. Enter done to finish");
-				WordList.Add(Console.ReadLine());
+				input = Console.ReadLine();
+				WordList.Add(input);
 			}
 			// TODO:  Print out the list
 			WordList.ListNodes();
 
             // TODO:  Prompt the user to input words, add those words to the FRONT of the list until they enter the word "done"
 			input = "empty";
-			while (input != "done:)
+			while (input != "done")
 			{
 				Console.WriteLine("Enter a word to add to the FRONT of the list. Enter done to finish");
-				WordList.Add(0, Console.ReadLine());
+				input = Console.ReadLine();
+				WordList.Add(0, input);
 			}
             // TODO:  Print out the list
 			WordList.ListNodes();
@@ -50,7 +51,7 @@ namespace RoverList
             // TODO:  Remove every word with an odd length
 			for (int i = 0; i < WordList.Count; i++)
 			{
-				if (WordList.NodeAt(i).data.Length % 2 == 1)
+				if (WordList.ElementAt(i).Length % 2 == 1)
 				{
 					WordList.RemoveAt(i);
 				}
