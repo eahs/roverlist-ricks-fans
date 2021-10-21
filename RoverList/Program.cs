@@ -32,7 +32,11 @@ namespace RoverList
 			{
 				Console.WriteLine("Enter a word to add to the list. Enter done to finish");
 				input = Console.ReadLine();
-				WordList.Add(input);
+				if (input != "done")
+				{
+					WordList.Add(input);
+				}
+				
 			}
 			// TODO:  Print out the list
 			WordList.ListNodes();
@@ -43,7 +47,11 @@ namespace RoverList
 			{
 				Console.WriteLine("Enter a word to add to the FRONT of the list. Enter done to finish");
 				input = Console.ReadLine();
-				WordList.Add(0, input);
+				if (input != "done")
+				{
+					WordList.Add(0, input);
+				}
+				
 			}
             // TODO:  Print out the list
 			WordList.ListNodes();

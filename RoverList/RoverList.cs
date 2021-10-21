@@ -36,10 +36,10 @@ namespace RoverList
                 head = n;
             }
             
-            else if (Position > Count)
+            else 
             {
                 current = NodeAt(Position - 1);
-                n.Next = current.Next.Next;
+                n.Next = current.Next?.Next;
                 current.Next = n;
             }
             count += 1;
@@ -53,7 +53,14 @@ namespace RoverList
 
         public override T ElementAt(int Position)
         {
-            return NodeAt(Position).Data;
+            var node = NodeAt(Position);
+
+            if (node is null)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            
+            return node.Data;
         }
 
         public override void ListNodes()
