@@ -55,22 +55,23 @@ namespace RoverList
 			}
             // TODO:  Print out the list
 			WordList.ListNodes();
-
+			Console.WriteLine("--------------");
             // TODO:  Remove every word with an odd length
 			for (int i = 0; i < WordList.Count; i++)
 			{
+				
 				if (WordList.ElementAt(i).Length % 2 == 1)
 				{
 					WordList.RemoveAt(i);
+					i -= 1;
 				}
 			}
             // TODO:  Print out the list
 			WordList.ListNodes();
-
+			
             // TODO:  Clear the list
 			WordList.Clear();
-
-            // TODO:  Print out the list
+			// TODO:  Print out the list
 			WordList.ListNodes();
 
         }

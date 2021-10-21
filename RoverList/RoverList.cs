@@ -54,7 +54,6 @@ namespace RoverList
         public override T ElementAt(int Position)
         {
             var node = NodeAt(Position);
-
             if (node is null)
             {
                 throw new IndexOutOfRangeException();
@@ -73,9 +72,17 @@ namespace RoverList
 
         public override bool RemoveAt(int Position)
         {
-            current = NodeAt(Position - 1);
-            current.Next = current.Next.Next;
+            if (Position == 0)
+            {
+                head = head.Next;
+            }
+            else
+            {
+                current = NodeAt(Position - 1);
+                current.Next = current.Next.Next;
+            }
 
+            count -= 1;
             return true;
         }
 
